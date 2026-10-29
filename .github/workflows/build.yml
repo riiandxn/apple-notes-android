@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     # Image ubuntu-24.04 sudah berisi Android SDK (ANDROID_HOME).
@@ -22,3 +25,14 @@ jobs:
         with:
           name: AppleNotes-apk
           path: app/build/outputs/apk/release/*.apk
+      - name: Publish ke Releases
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/release/app-release.apk AppleNotes.apk
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest AppleNotes.apk \
+            --title "Apple Notes untuk Android" \
+            --notes "Build otomatis dari commit ${GITHUB_SHA::7}. Unduh AppleNotes.apk lalu install di HP Android." \
+            --target "$GITHUB_SHA"
