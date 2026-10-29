@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="offline_title">Tidak ada koneksi</string>
+    <string name="offline_message">Catatan Apple disinkronkan lewat iCloud, jadi butuh internet. Periksa koneksi lalu coba lagi.</string>
+    <string name="retry">Coba lagi</string>
+    <string name="menu_reload">Muat ulang</string>
+    <string name="menu_desktop">Mode desktop</string>
+    <string name="menu_logout">Keluar dari Apple ID</string>
+    <string name="logout_confirm">Hapus sesi login Apple ID dari perangkat ini?</string>
+    <string name="logout_done">Sesi dihapus. Silakan login lagi.</string>
+    <string name="cancel">Batal</string>
+    <string name="ok">Keluar</string>
+    <string name="menu">Menu</string>
+</resources>
